@@ -23,7 +23,7 @@
     <RootNamespace>SimModelSolver_CVODES</RootNamespace>
     <Keyword>Win32Proj</Keyword>
     <ProjectName>OSPSuite.SimModelSolver_CVODES</ProjectName>
-    <WindowsTargetPlatformVersion>8.1</WindowsTargetPlatformVersion>
+    <WindowsTargetPlatformVersion>10.0.17763.0</WindowsTargetPlatformVersion>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
