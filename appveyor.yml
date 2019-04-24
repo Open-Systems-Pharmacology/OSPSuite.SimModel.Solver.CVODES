@@ -9,8 +9,6 @@ environment:
 version: '$(major).$(minor).$(release).{build}'
 
 build_script:
-  - cmd: msbuild OSPSuite.SimModelSolver.CVODES.sln /property:Configuration=Debug;Platform=x86 /logger:"C:\Program Files\AppVeyor\BuildAgent\Appveyor.MSBuildLogger.dll"
-  - cmd: msbuild OSPSuite.SimModelSolver.CVODES.sln /property:Configuration=Release;Platform=x86 /logger:"C:\Program Files\AppVeyor\BuildAgent\Appveyor.MSBuildLogger.dll"
   - cmd: msbuild OSPSuite.SimModelSolver.CVODES.sln /property:Configuration=Debug;Platform=x64 /logger:"C:\Program Files\AppVeyor\BuildAgent\Appveyor.MSBuildLogger.dll"
   - cmd: msbuild OSPSuite.SimModelSolver.CVODES.sln /property:Configuration=Release;Platform=x64 /logger:"C:\Program Files\AppVeyor\BuildAgent\Appveyor.MSBuildLogger.dll"
 
@@ -38,7 +36,6 @@ after_build:
 
 test:
   assemblies:
-  - '**\*.Tests.Release.Win32.dll'
   - '**\*.Tests.Release.x64.dll'
 
 skip_commits:
