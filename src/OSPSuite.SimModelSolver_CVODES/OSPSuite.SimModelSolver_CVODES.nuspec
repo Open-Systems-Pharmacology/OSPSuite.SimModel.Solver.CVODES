@@ -15,14 +15,6 @@
     <tags>open-systems-pharmacology</tags>
   </metadata>
   <files>
-    <file src="..\..\Build\Debug\Win32\OSPSuite.SimModelSolver_CVODES.dll" target="OSPSuite.SimModelSolver_CVODES\bin\native\x86\Debug" />
-    <file src="..\..\Build\Debug\Win32\OSPSuite.SimModelSolver_CVODES.lib" target="OSPSuite.SimModelSolver_CVODES\bin\native\x86\Debug" />
-    <file src="..\..\Build\Debug\Win32\OSPSuite.SimModelSolver_CVODES.pdb" target="OSPSuite.SimModelSolver_CVODES\bin\native\x86\Debug" />
-    
-    <file src="..\..\Build\Release\Win32\OSPSuite.SimModelSolver_CVODES.dll" target="OSPSuite.SimModelSolver_CVODES\bin\native\x86\Release" />
-    <file src="..\..\Build\Release\Win32\OSPSuite.SimModelSolver_CVODES.lib" target="OSPSuite.SimModelSolver_CVODES\bin\native\x86\Release" />
-    <file src="..\..\Build\Release\Win32\OSPSuite.SimModelSolver_CVODES.pdb" target="OSPSuite.SimModelSolver_CVODES\bin\native\x86\Release" />
-
     <file src="..\..\Build\Debug\x64\OSPSuite.SimModelSolver_CVODES.dll" target="OSPSuite.SimModelSolver_CVODES\bin\native\x64\Debug" />
     <file src="..\..\Build\Debug\x64\OSPSuite.SimModelSolver_CVODES.lib" target="OSPSuite.SimModelSolver_CVODES\bin\native\x64\Debug" />
     <file src="..\..\Build\Debug\x64\OSPSuite.SimModelSolver_CVODES.pdb" target="OSPSuite.SimModelSolver_CVODES\bin\native\x64\Debug" />
