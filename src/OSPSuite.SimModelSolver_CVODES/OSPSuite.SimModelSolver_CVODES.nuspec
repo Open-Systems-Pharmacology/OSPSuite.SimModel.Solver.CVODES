@@ -11,7 +11,7 @@
     <licenseUrl>https://github.com/Open-Systems-PharmacologyOSPSuite.SimModelSolver_CVODES/blob/master/LICENSE</licenseUrl>
     <iconUrl>https://raw.githubusercontent.com/Open-Systems-Pharmacology/Suite/master/logo.png</iconUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
-    <copyright>Copyright © 2017 - Open Systems Pharmacology Community</copyright>
+    <copyright>Copyright © 2020 - Open Systems Pharmacology Community</copyright>
     <tags>open-systems-pharmacology</tags>
   </metadata>
   <files>
@@ -23,8 +23,17 @@
     <file src="..\..\Build\Release\x64\OSPSuite.SimModelSolver_CVODES.lib" target="OSPSuite.SimModelSolver_CVODES\bin\native\x64\Release" />
     <file src="..\..\Build\Release\x64\OSPSuite.SimModelSolver_CVODES.pdb" target="OSPSuite.SimModelSolver_CVODES\bin\native\x64\Release" />
 
-    <file src="include\**\*.h" target="OSPSuite.SimModelSolver_CVODES\include" />
-    <file src="..\OSPSuite.SimModelSolverBase\src\OSPSuite.SimModelSolverBase\include\**\*.h" target="OSPSuite.SimModelSolver_CVODES\include" />
+    <file src="..\OSPSuite.SimModelSolver_CVODES\include\**\*.h" target="OSPSuite.SimModelSolver_CVODES\include" />
+    <file src="..\OSPSuite.SimModelSolver_CVODES\src\**\*.*" target="OSPSuite.SimModelSolver_CVODES\src" />
+    <file src="..\OSPSuite.SimModelSolver_CVODES\*.*" target="OSPSuite.SimModelSolver_CVODES" exclude="..\OSPSuite.SimModelSolver_CVODES\*.vcxproj*" />
+
+    <file src="..\CVODES\include\**\*.h" target="CVODES\include" />
+    <file src="..\CVODES\src\**\*.*" target="CVODES\src" />
+    <file src="..\CVODES\*.*" target="CVODES" exclude="..\CVODES\*.vcxproj*" />
+
+    <file src="..\OSPSuite.SimModelSolverBase\include\**\*.h" target="OSPSuite.SimModelSolverBase\include" />
+    <file src="..\OSPSuite.SimModelSolverBase\src\**\*.*" target="OSPSuite.SimModelSolverBase\src" />
+    <file src="..\OSPSuite.SimModelSolverBase\*.*" target="OSPSuite.SimModelSolverBase" exclude="..\OSPSuite.SimModelSolverBase\*.vcxproj*" />
 
   </files>
 </package>
