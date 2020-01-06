@@ -31,9 +31,9 @@
     <file src="..\CVODES\src\**\*.*" target="CVODES\src" />
     <file src="..\CVODES\*.*" target="CVODES" exclude="..\CVODES\*.vcxproj*" />
 
-    <file src="..\OSPSuite.SimModelSolverBase\include\**\*.h" target="OSPSuite.SimModelSolverBase\include" />
-    <file src="..\OSPSuite.SimModelSolverBase\src\**\*.*" target="OSPSuite.SimModelSolverBase\src" />
-    <file src="..\OSPSuite.SimModelSolverBase\*.*" target="OSPSuite.SimModelSolverBase" exclude="..\OSPSuite.SimModelSolverBase\*.vcxproj*" />
+    <file src="..\OSPSuite.SimModelSolverBase\src\OSPSuite.SimModelSolverBase\include\**\*.h" target="OSPSuite.SimModelSolverBase\include" />
+    <file src="..\OSPSuite.SimModelSolverBase\src\OSPSuite.SimModelSolverBase\src\**\*.*" target="OSPSuite.SimModelSolverBase\src" />
+    <file src="..\OSPSuite.SimModelSolverBase\src\OSPSuite.SimModelSolverBase\*.*" target="OSPSuite.SimModelSolverBase" exclude="..\OSPSuite.SimModelSolverBase\*.vcxproj*" />
 
   </files>
 </package>
