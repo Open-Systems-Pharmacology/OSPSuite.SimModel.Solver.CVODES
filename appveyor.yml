@@ -1,4 +1,6 @@
-image: Visual Studio 2019
+image: 
+- Visual Studio 2019
+- Ubuntu1804
 
 environment:
   major: 4
@@ -11,14 +13,29 @@ version: '$(major).$(minor).$(release).{build}'
 build_script:
   - cmd: msbuild OSPSuite.SimModelSolver.CVODES.sln /property:Configuration=Debug;Platform=x64 /logger:"C:\Program Files\AppVeyor\BuildAgent\Appveyor.MSBuildLogger.dll"
   - cmd: msbuild OSPSuite.SimModelSolver.CVODES.sln /property:Configuration=Release;Platform=x64 /logger:"C:\Program Files\AppVeyor\BuildAgent\Appveyor.MSBuildLogger.dll"
+  # linux specific cmake build of CVODES (C static lib) and OSPSuite.SimModelSolver_CVODES (C++ dynamic lib)
+  - sh: cmake -BBuild/Release/x64/ -Hsrc/CVODES/ -DCMAKE_BUILD_TYPE=Release -DBUILD_ARKODE=OFF -DBUILD_CVODE=OFF -DBUILD_CVODES=ON -DBUILD_IDA=OFF -DBUILD_IDAS=OFF -DBUILD_KINSOL=OFF -DBUILD_SHARED_LIBS=OFF -DEXAMPLES_ENABLE_C=OFF -DBUILD_STATIC_LIBS=ON
+  - sh: make -C Build/Release/x64
+  - sh: cmake -BBuild/Debug/x64/ -Hsrc/CVODES/ -DCMAKE_BUILD_TYPE=Debug -DBUILD_ARKODE=OFF -DBUILD_CVODE=OFF -DBUILD_CVODES=ON -DBUILD_IDA=OFF -DBUILD_IDAS=OFF -DBUILD_KINSOL=OFF -DBUILD_SHARED_LIBS=OFF -DEXAMPLES_ENABLE_C=OFF -DBUILD_STATIC_LIBS=ON
+  - sh: make -C Build/Debug/x64
 
-cache:
-  - packages -> **\packages.config  # preserve "packages" directory in the root of build folder but will reset it if packages.config is modified
+  #TODO enable 
+#  - sh: cmake -B Build/Release/x64/ -H src/OSPSuite.SimModelSolver_CVODES/ -DCMAKE_BUILD_TYPE=Release
+#  - sh: cmake -B Build/Debug/x64/ -H src/OSPSuite.SimModelSolver_CVODES/ -DCMAKE_BUILD_TYPE=Debug
+#  - sh: make -C Build/Release/x64
+#  - sh: make -C Build/Debug/x64
+
+#2check
+#cache:
+#  - packages -> **\packages.config  # preserve "packages" directory in the root of build folder but will reset it if packages.config is modified
 
 before_build:
-  - nuget sources add -name bddhelper -source https://ci.appveyor.com/nuget/ospsuite-bddhelper 
-  - nuget install packages.config -OutputDirectory packages # cannot use automatic artifact publish because it's not recognized in a C++/CLI project
   - ps: (get-content src\OSPSuite.SimModelSolver_CVODES\version.h) | foreach-object {$_ -replace "RELEASE 0", "RELEASE $env:RELEASE" -replace "MAJOR 0", "MAJOR $env:MAJOR" -replace "MINOR 0", "MINOR $env:MINOR" -replace "BUILD 0", "BUILD $env:APPVEYOR_BUILD_NUMBER"} | set-content src\OSPSuite.SimModelSolver_CVODES\version.h
+  # nuget packages are required by tests only which is currently performed on Windows only
+  - cmd: nuget sources add -name bddhelper -source https://ci.appveyor.com/nuget/ospsuite-bddhelper 
+  - cmd: nuget install packages.config -OutputDirectory packages # cannot use automatic artifact publish because it's not recognized in a C++/CLI project
+  - sh: mkdir -p Build/Debug/x64
+  - sh: mkdir -p Build/Release/x64
 
 skip_branch_with_pr: true
 
@@ -38,14 +55,19 @@ install:
 after_build:
   - cmd: nuget pack src\OSPSuite.SimModelSolver_CVODES\OSPSuite.SimModelSolver_CVODES.nuspec -version %app_version%
   - ps: Get-ChildItem .\OSPSuite.SimModelSolver_CVODES.*.nupkg | % { Push-AppveyorArtifact $_.FullName -FileName $_.Name }
+  #TODO linux package
+#  - sh: nuget pack src/OSPSuite.FuncParser/OSPSuite.FuncParserUbuntu18.nuspec -version $app_version
 
-test:
-  assemblies:
-  - '**\*.Tests.Release.x64.dll'
+test_script:
+  # currently tests are run on Windows only
+  - cmd: dotnet test --no-build --no-restore --logger:Appveyor
 
 skip_commits:
   files:
     - '*.md'
+
+nuget:
+  disable_publish_on_pr: true
 
 notifications:
   - provider: Slack
