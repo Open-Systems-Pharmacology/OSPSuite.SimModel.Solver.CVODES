@@ -23,9 +23,8 @@ build_script:
   - sh: cmake -BBuild/Debug/x64/ -Hsrc/OSPSuite.SimModelSolver_CVODES/ -DCMAKE_BUILD_TYPE=Debug -DlibCVODES=Build/Debug/x64/CVODE/src/cvodes/libsundials_cvodes.a
   - sh: make -C Build/Debug/x64/
 
-#2check
-#cache:
-#  - packages -> **\packages.config  # preserve "packages" directory in the root of build folder but will reset it if packages.config is modified
+cache:
+  - packages -> **\packages.config  # preserve "packages" directory in the root of build folder but will reset it if packages.config is modified
 
 before_build:
   - ps: (get-content src\OSPSuite.SimModelSolver_CVODES\version.h) | foreach-object {$_ -replace "RELEASE 0", "RELEASE $env:RELEASE" -replace "MAJOR 0", "MAJOR $env:MAJOR" -replace "MINOR 0", "MINOR $env:MINOR" -replace "BUILD 0", "BUILD $env:APPVEYOR_BUILD_NUMBER"} | set-content src\OSPSuite.SimModelSolver_CVODES\version.h
