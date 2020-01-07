@@ -54,9 +54,9 @@ install:
 
 after_build:
   - cmd: nuget pack src\OSPSuite.SimModelSolver_CVODES\OSPSuite.SimModelSolver_CVODES.nuspec -version %app_version%
-  - ps: Get-ChildItem .\OSPSuite.SimModelSolver_CVODES.*.nupkg | % { Push-AppveyorArtifact $_.FullName -FileName $_.Name }
   - sh: nuget pack src/OSPSuite.SimModelSolver_CVODES/OSPSuite.SimModelSolver_CVODES_Ubuntu18.nuspec -version $app_version
-
+  - ps: Get-ChildItem .\OSPSuite.SimModelSolver_CVODES.*.nupkg | % { Push-AppveyorArtifact $_.FullName -FileName $_.Name }
+  
 test:
   # currently tests are run on Windows only
   assemblies:

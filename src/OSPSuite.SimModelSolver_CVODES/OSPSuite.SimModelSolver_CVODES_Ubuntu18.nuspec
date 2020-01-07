@@ -2,7 +2,7 @@
 <package >
   <metadata>
     <description>SimModel Solver</description>
-    <id>OSPSuite.SimModelSolver_CVODES</id>
+    <id>OSPSuite.SimModelSolver_CVODES.Ubuntu18</id>
     <version>$version$</version>
     <title>OSPSuite.SimModelSolver_CVODES</title>
     <authors>Open-Systems-Pharmacology</authors>
