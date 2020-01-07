@@ -35,7 +35,6 @@ before_build:
   - sh: mkdir -p Build/Debug/x64/CVODE
   - sh: mkdir -p Build/Release/x64
   - sh: mkdir -p Build/Release/x64/CVODE
-  - sh: git submodule update --init --recursive
 
 skip_branch_with_pr: true
 
@@ -50,13 +49,12 @@ pull_requests:
   do_not_increment_build_number: true     
 
 install:
-  - cmd: git submodule update --init --recursive
+  - ps: git submodule update --init --recursive
 
 after_build:
   - cmd: nuget pack src\OSPSuite.SimModelSolver_CVODES\OSPSuite.SimModelSolver_CVODES.nuspec -version %app_version%
   - ps: Get-ChildItem .\OSPSuite.SimModelSolver_CVODES.*.nupkg | % { Push-AppveyorArtifact $_.FullName -FileName $_.Name }
-  #TODO linux package
-#  - sh: nuget pack src/OSPSuite.SimModelSolver_CVODES/OSPSuite.SimModelSolver_CVODESUbuntu18.nuspec -version $app_version
+  - sh: nuget pack src/OSPSuite.SimModelSolver_CVODES/OSPSuite.SimModelSolver_CVODES_Ubuntu18.nuspec -version $app_version
 
 test:
   # currently tests are run on Windows only
