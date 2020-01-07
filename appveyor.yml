@@ -36,7 +36,7 @@ before_build:
   - sh: mkdir -p Build/Debug/x64/CVODE
   - sh: mkdir -p Build/Release/x64
   - sh: mkdir -p Build/Release/x64/CVODE
-
+  - sh: git submodule update --init --recursive
 
 skip_branch_with_pr: true
 
