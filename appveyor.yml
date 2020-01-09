@@ -31,10 +31,7 @@ before_build:
   # nuget packages are required by tests only which is currently performed on Windows only
   - cmd: nuget sources add -name bddhelper -source https://ci.appveyor.com/nuget/ospsuite-bddhelper 
   - cmd: nuget install packages.config -OutputDirectory packages # cannot use automatic artifact publish because it's not recognized in a C++/CLI project
-  - sh: mkdir -p Build/Debug/x64
-  - sh: mkdir -p Build/Debug/x64/CVODE
-  - sh: mkdir -p Build/Release/x64
-  - sh: mkdir -p Build/Release/x64/CVODE
+  - dotnet add tests/OSPSuite.SimModel.Tests/OSPSuite.SimModel.Tests.csproj package Appveyor.TestLogger --version 2.0.0
 
 skip_branch_with_pr: true
 
@@ -57,10 +54,8 @@ after_build:
   - sh: nuget pack src/OSPSuite.SimModelSolver_CVODES/OSPSuite.SimModelSolver_CVODES_Ubuntu18.nuspec -version $app_version
   - ps: Get-ChildItem .\OSPSuite.SimModelSolver_CVODES.*.nupkg | % { Push-AppveyorArtifact $_.FullName -FileName $_.Name }
   
-test:
-  # currently tests are run on Windows only
-  assemblies:
-  - '**\*.Tests.Release.x64.dll'
+test_script:
+  - ps: dotnet test --no-build --no-restore --logger:Appveyor --configuration:Release 
   
 skip_commits:
   files:
