@@ -31,10 +31,6 @@ before_build:
   # nuget packages are required by tests only which is currently performed on Windows only
   - cmd: nuget sources add -name bddhelper -source https://ci.appveyor.com/nuget/ospsuite-bddhelper 
   - cmd: nuget install packages.config -OutputDirectory packages # cannot use automatic artifact publish because it's not recognized in a C++/CLI project
-  - sh: mkdir -p Build/Debug/x64
-  - sh: mkdir -p Build/Debug/x64/CVODE
-  - sh: mkdir -p Build/Release/x64
-  - sh: mkdir -p Build/Release/x64/CVODE
 
 skip_branch_with_pr: true
 
