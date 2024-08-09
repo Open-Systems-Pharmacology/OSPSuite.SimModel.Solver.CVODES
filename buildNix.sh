@@ -15,4 +15,4 @@ make -C Build/Debug/x64/CVODE/
 cmake -BBuild/Debug/x64/ -Hsrc/OSPSuite.SimModelSolver_CVODES/ -DCMAKE_BUILD_TYPE=Debug -DlibCVODES=Build/Debug/x64/CVODE/src/cvodes/libsundials_cvodes.a
 make -C Build/Debug/x64/
 
-nuget pack src/OSPSuite.SimModelSolver_CVODES/OSPSuite.SimModelSolver_CVODES_$1.nuspec -version $2
+dotnet pack src/OSPSuite.SimModelSolver_CVODES/pack.csproj -p:PackageVersion=$2 -o ./
