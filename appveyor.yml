@@ -1,7 +1,7 @@
 image: 
+- macOS
 - Visual Studio 2022
 - Ubuntu2204
-- macOS
 
 environment:
   major: 4
