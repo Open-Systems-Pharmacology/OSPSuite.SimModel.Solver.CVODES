@@ -19,6 +19,9 @@
 #ifdef linux
 #define CVODES_EXPORT 
 #endif
+#ifdef __APPLE__
+#define CVODES_EXPORT 
+#endif
 
 class UserData;
 

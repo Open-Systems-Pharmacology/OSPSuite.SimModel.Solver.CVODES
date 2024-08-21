@@ -1,0 +1,22 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFrameworks>net472;netstandard2.0</TargetFrameworks>
+    <NoBuild>true</NoBuild>
+    <IncludeBuildOutput>false</IncludeBuildOutput>
+        <NuspecProperties>version=$(PackageVersion)</NuspecProperties>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="$([MSBuild]::IsOSPlatform('Windows'))">
+    <DefineConstants>_WINDOWS</DefineConstants>
+    <NuspecFile>OSPSuite.SimModelSolver_CVODES.nuspec</NuspecFile> 
+  </PropertyGroup>
+
+  <PropertyGroup Condition="$([MSBuild]::IsOSPlatform('Linux'))">
+    <NuspecFile>OSPSuite.SimModelSolver_CVODES_Ubuntu22.nuspec</NuspecFile> 
+  </PropertyGroup>
+
+  <PropertyGroup Condition="$([MSBuild]::IsOSPlatform('OSX'))">
+    <NuspecFile>OSPSuite.SimModelSolver_CVODES_MacOS.nuspec</NuspecFile> 
+  </PropertyGroup>
+
+</Project>
