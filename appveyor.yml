@@ -32,7 +32,6 @@ before_build:
   # nuget packages are required by tests only which is currently performed on Windows only
   - ps: nuget sources add -name bddhelper -source https://ci.appveyor.com/nuget/ospsuite-bddhelper 
   - ps: nuget sources add -name sundials_cvodes -source https://ci.appveyor.com/nuget/cvodes
-  - ps: nuget sources add -name nuget -source https://api.nuget.org/v3/index.json
   - ps: nuget install packages.config -OutputDirectory packages -ExcludeVersion
 
 skip_branch_with_pr: true
