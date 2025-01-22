@@ -31,6 +31,7 @@ before_build:
   - ps: (get-content src\OSPSuite.SimModelSolver_CVODES\version.h) | foreach-object {$_ -replace "RELEASE 0", "RELEASE $env:RELEASE" -replace "MAJOR 0", "MAJOR $env:MAJOR" -replace "MINOR 0", "MINOR $env:MINOR" -replace "BUILD 0", "BUILD $env:APPVEYOR_BUILD_NUMBER"} | set-content src\OSPSuite.SimModelSolver_CVODES\version.h
   # nuget packages are required by tests only which is currently performed on Windows only
   - cmd: nuget sources add -name bddhelper -source https://ci.appveyor.com/nuget/ospsuite-bddhelper 
+  - cmd: nuget sources add -name sundials_cvodes -source https://ci.appveyor.com/nuget/cvodes
   - cmd: nuget install packages.config -OutputDirectory packages # cannot use automatic artifact publish because it's not recognized in a C++/CLI project
 
 skip_branch_with_pr: true
