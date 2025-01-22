@@ -32,7 +32,7 @@ before_build:
   # nuget packages are required by tests only which is currently performed on Windows only
   - cmd: nuget sources add -name bddhelper -source https://ci.appveyor.com/nuget/ospsuite-bddhelper 
   - cmd: nuget sources add -name sundials_cvodes -source https://ci.appveyor.com/nuget/cvodes
-  - cmd: nuget install packages.config -OutputDirectory packages # cannot use automatic artifact publish because it's not recognized in a C++/CLI project
+  - cmd: nuget install packages.config -OutputDirectory packages -ExcludeVersion
 
 skip_branch_with_pr: true
 
