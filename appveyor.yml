@@ -16,16 +16,16 @@ build_script:
   - cmd: msbuild OSPSuite.SimModelSolver.CVODES.sln /property:Configuration=Release;Platform=x64 /logger:"C:\Program Files\AppVeyor\BuildAgent\Appveyor.MSBuildLogger.dll"
 
   - sh: |
-    if [ "$(uname)" == "Darwin" ]; 
-    then
-        Platform=MacOS
-    else
-        Platform=Ubuntu22
-    fi
-    cmake -BBuild/Release/x64/ -Hsrc/OSPSuite.SimModelSolver_CVODES/ -DCMAKE_BUILD_TYPE=Release  -DlibCVODES=packages/CVODES.${Platform}/CVODES/bin/native/x64/Release/libsundials_cvodes.a
-    make -C Build/Release/x64/
-    cmake -BBuild/Debug/x64/ -Hsrc/OSPSuite.SimModelSolver_CVODES/ -DCMAKE_BUILD_TYPE=Debug  -DlibCVODES=packages/CVODES.${Platform}/CVODES/bin/native/x64/Debug/libsundials_cvodes.a
-    make -C Build/Debug/x64/
+      if [ "$(uname)" == "Darwin" ]; 
+      then
+          Platform=MacOS
+      else
+          Platform=Ubuntu22
+      fi
+      cmake -BBuild/Release/x64/ -Hsrc/OSPSuite.SimModelSolver_CVODES/ -DCMAKE_BUILD_TYPE=Release  -DlibCVODES=packages/CVODES.${Platform}/CVODES/bin/native/x64/Release/libsundials_cvodes.a
+      make -C Build/Release/x64/
+      cmake -BBuild/Debug/x64/ -Hsrc/OSPSuite.SimModelSolver_CVODES/ -DCMAKE_BUILD_TYPE=Debug  -DlibCVODES=packages/CVODES.${Platform}/CVODES/bin/native/x64/Debug/libsundials_cvodes.a
+      make -C Build/Debug/x64/
 
 before_build:
   - ps: (get-content src\OSPSuite.SimModelSolver_CVODES\version.h) | foreach-object {$_ -replace "RELEASE 0", "RELEASE $env:RELEASE" -replace "MAJOR 0", "MAJOR $env:MAJOR" -replace "MINOR 0", "MINOR $env:MINOR" -replace "BUILD 0", "BUILD $env:APPVEYOR_BUILD_NUMBER"} | set-content src\OSPSuite.SimModelSolver_CVODES\version.h
