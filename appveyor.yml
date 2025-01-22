@@ -1,7 +1,7 @@
 image: 
 - macOS
-- Visual Studio 2022
 - Ubuntu2204
+- Visual Studio 2022
 
 environment:
   major: 4
@@ -29,9 +29,13 @@ build_script:
 
 before_build:
   - ps: (get-content src\OSPSuite.SimModelSolver_CVODES\version.h) | foreach-object {$_ -replace "RELEASE 0", "RELEASE $env:RELEASE" -replace "MAJOR 0", "MAJOR $env:MAJOR" -replace "MINOR 0", "MINOR $env:MINOR" -replace "BUILD 0", "BUILD $env:APPVEYOR_BUILD_NUMBER"} | set-content src\OSPSuite.SimModelSolver_CVODES\version.h
-  # nuget packages are required by tests only which is currently performed on Windows only
   - ps: nuget sources add -name bddhelper -source https://ci.appveyor.com/nuget/ospsuite-bddhelper 
   - ps: nuget sources add -name sundials_cvodes -source https://ci.appveyor.com/nuget/cvodes
+  - sh: |
+      if [ "$(uname)" == "Linux" ]; 
+      then
+          nuget sources add -name nuget -source https://api.nuget.org/v3/index.json
+      fi
   - ps: nuget install packages.config -OutputDirectory packages -ExcludeVersion
 
 skip_branch_with_pr: true
