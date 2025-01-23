@@ -375,8 +375,8 @@ namespace UnitTests
 
 					do
 					{
-					_CVODE_Result = pCVODES->PerformSolverStep(tout, Solution, SensitivityValues, tret);
-					} while (tret < tout);
+					   _CVODE_Result = pCVODES->PerformSolverStep(tout, Solution, SensitivityValues, tret);
+					} while (_CVODE_Result == 0 && tret <= tout);
 
 					if (_CVODE_Result != 0)
 						return;
@@ -756,7 +756,7 @@ namespace UnitTests
 					do
 					{
 						_CVODE_Result = pCVODES->PerformSolverStep(tout, Solution, NULL, tret);
-					} while (tret < tout);
+					} while (_CVODE_Result == 0 && tret < tout);
 
 					if (_CVODE_Result != 0)
 						return;
