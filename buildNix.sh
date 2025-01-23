@@ -1,18 +1,17 @@
 #! /bin/sh
 
 #call: buildLinux.sh distributionName version
-# e.g. buildLinux.sh CentOS7 4.0.0.49
+# e.g. buildLinux.sh ${1} 4.0.0.49
+
+nuget sources add -name sundials_cvodes -source https://ci.appveyor.com/nuget/cvodes
+nuget install packages.config -OutputDirectory packages -ExcludeVersion
 
 git submodule update --init --recursive
 
-cmake -BBuild/Release/x64/CVODE/ -Hsrc/CVODES/ -DCMAKE_POSITION_INDEPENDENT_CODE=TRUE -DCMAKE_BUILD_TYPE=Release -DBUILD_ARKODE=OFF -DBUILD_CVODE=OFF -DBUILD_CVODES=ON -DBUILD_IDA=OFF -DBUILD_IDAS=OFF -DBUILD_KINSOL=OFF -DBUILD_SHARED_LIBS=OFF -DEXAMPLES_ENABLE_C=OFF -DBUILD_STATIC_LIBS=ON
-make -C Build/Release/x64/CVODE/
-cmake -BBuild/Release/x64/ -Hsrc/OSPSuite.SimModelSolver_CVODES/ -DCMAKE_BUILD_TYPE=Release -DlibCVODES=Build/Release/x64/CVODE/src/cvodes/libsundials_cvodes.a
+cmake -BBuild/Release/x64/ -Hsrc/OSPSuite.SimModelSolver_CVODES/ -DCMAKE_BUILD_TYPE=Release -DlibCVODES=packages/CVODES.${1}/CVODES/bin/native/x64/Release/libsundials_cvodes.a
 make -C Build/Release/x64/
 
-cmake -BBuild/Debug/x64/CVODE/ -Hsrc/CVODES/ -DCMAKE_POSITION_INDEPENDENT_CODE=TRUE -DCMAKE_BUILD_TYPE=Debug -DBUILD_ARKODE=OFF -DBUILD_CVODE=OFF -DBUILD_CVODES=ON -DBUILD_IDA=OFF -DBUILD_IDAS=OFF -DBUILD_KINSOL=OFF -DBUILD_SHARED_LIBS=OFF -DEXAMPLES_ENABLE_C=OFF -DBUILD_STATIC_LIBS=ON
-make -C Build/Debug/x64/CVODE/
-cmake -BBuild/Debug/x64/ -Hsrc/OSPSuite.SimModelSolver_CVODES/ -DCMAKE_BUILD_TYPE=Debug -DlibCVODES=Build/Debug/x64/CVODE/src/cvodes/libsundials_cvodes.a
+cmake -BBuild/Debug/x64/ -Hsrc/OSPSuite.SimModelSolver_CVODES/ -DCMAKE_BUILD_TYPE=Debug -DlibCVODES=packages/CVODES.${1}/CVODES/bin/native/x64/Debug/libsundials_cvodes.a
 make -C Build/Debug/x64/
 
 dotnet pack src/OSPSuite.SimModelSolver_CVODES/pack.csproj -p:PackageVersion=$2 -o ./
