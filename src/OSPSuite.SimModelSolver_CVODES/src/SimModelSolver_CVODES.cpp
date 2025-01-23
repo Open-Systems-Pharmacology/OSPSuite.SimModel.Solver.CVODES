@@ -326,7 +326,7 @@ int SimModelSolver_CVODES::PerformSolverStep(double tout, double* y, double** yS
 	if ((iResultflag != CV_SUCCESS) || (_numberOfSensitivityParameters == 0))
 		return iResultflag;
 
-	iResultflag = CVodeGetSens(_cvodeMem, &tret, _sensitivityValues);
+	iResultflag = CVodeGetSensDky(_cvodeMem, tret, 0, _sensitivityValues);
 
 	//copy sensitivity values 
 	//at the end; yS[i][j]=dy_i/dp_j
