@@ -297,17 +297,17 @@ int SimModelSolver_CVODES::PerformSolverStep(double tout, double* y, double** yS
 	if (!_initialized)
 		throw SimModelSolverErrorData(SimModelSolverErrorData::err_FAILURE, ERROR_SOURCE, "Solver was not initialized");
 
-	//perform next solver step
-	int iResultflag = CVode(_cvodeMem, tout, _solution, &tret, CV_ONE_STEP);
-
-	if (iResultflag == CV_SUCCESS && tret < tout)
-		return CV_SUCCESS;
-
-	if (iResultflag == CV_SUCCESS)
-	{
-		(void)CVodeGetDky(_cvodeMem, tout, 0, _solution);
-		tret = tout;
-	}
+	// perform next solver step
+	 int iResultflag = CVode(_cvodeMem, tout, _solution, &tret, CV_ONE_STEP);
+	
+	 if (iResultflag == CV_SUCCESS && tret < tout)
+	 	return CV_SUCCESS;
+	
+	 if (iResultflag == CV_SUCCESS)
+	 {
+	 	(void)CVodeGetDky(_cvodeMem, tout, 0, _solution);
+	 	tret = tout;
+	 }
 
 	// int iResultflag = CVode(_cvodeMem, tout, _solution, &tret, CV_NORMAL);
 
