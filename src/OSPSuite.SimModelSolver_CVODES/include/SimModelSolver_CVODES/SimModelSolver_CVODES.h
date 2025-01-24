@@ -114,7 +114,7 @@ public:
 	// - positive value if a recoverable error occurred (e.g. max. no. of internal solver steps reached)
 	// - negative value if an unrecoverable error occurred (e.g. illegal input)
 	//-----------------------------------------------------------------------------------------------------
-	CVODES_EXPORT int PerformSolverStep(double tout, double * y, double ** yS, double & tret);
+	CVODES_EXPORT int PerformSolverStep(double tout, double * y, double ** yS, double & tret, SimModelSolverBase::STEP_MODE step_mode);
 
 	//-----------------------------------------------------------------------------------------------------
 	//Reinitialize DE system (e.g. in case of bigger discontinuities)
