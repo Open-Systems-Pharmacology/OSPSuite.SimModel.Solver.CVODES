@@ -303,7 +303,7 @@ int SimModelSolver_CVODES::PerformSolverStep(double tout, double* y, double** yS
       iResultflag = CVode(_cvodeMem, tout, _solution, &tret, CV_ONE_STEP);
 
    	_step++;
-      if (_mxStep!= 0 && _step > _mxStep)
+      if (_mxStep != 0 && _step > _mxStep)
          return CV_TOO_MUCH_WORK;
 
       // After a single internal step return to the caller
