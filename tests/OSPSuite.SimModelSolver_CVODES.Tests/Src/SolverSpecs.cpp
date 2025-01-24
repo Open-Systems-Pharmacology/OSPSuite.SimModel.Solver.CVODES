@@ -375,7 +375,7 @@ namespace UnitTests
 
 					do
 					{
-					   _CVODE_Result = pCVODES->PerformSolverStep(tout, Solution, SensitivityValues, tret);
+					   _CVODE_Result = pCVODES->PerformSolverStep(tout, Solution, SensitivityValues, tret, SimModelSolverBase::SINGLE);
 					} while (_CVODE_Result == 0 && tret < tout);
 
 					if (_CVODE_Result != 0)
@@ -755,7 +755,7 @@ namespace UnitTests
 					double tret;
 					do
 					{
-						_CVODE_Result = pCVODES->PerformSolverStep(tout, Solution, NULL, tret);
+						_CVODE_Result = pCVODES->PerformSolverStep(tout, Solution, NULL, tret, SimModelSolverBase::SINGLE);
 					} while (_CVODE_Result == 0 && tret < tout);
 
 					if (_CVODE_Result != 0)
