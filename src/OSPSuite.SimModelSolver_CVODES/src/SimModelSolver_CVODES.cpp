@@ -290,7 +290,6 @@ void SimModelSolver_CVODES::setupSensitivityProblem()
 
 int SimModelSolver_CVODES::PerformSolverStep(double tout, double* y, double** yS, double& tret, STEP_MODE step_mode)
 {
-
    const char* ERROR_SOURCE = "SimModelSolver_CVODES::PerformSolverStep";
 
    int iResultflag;
@@ -303,6 +302,10 @@ int SimModelSolver_CVODES::PerformSolverStep(double tout, double* y, double** yS
       // perform next solver step
       iResultflag = CVode(_cvodeMem, tout, _solution, &tret, CV_ONE_STEP);
 
+   	_step++;
+      if (_mxStep != 0 && _step > _mxStep)
+         return CV_TOO_MUCH_WORK;
+
       // After a single internal step return to the caller
       if (iResultflag == CV_SUCCESS && tret < tout)
          return CV_SUCCESS;
@@ -311,6 +314,7 @@ int SimModelSolver_CVODES::PerformSolverStep(double tout, double* y, double** yS
       // it returns early after adjusting tret
       if (iResultflag == CV_SUCCESS)
       {
+         _step = 0;
          iResultflag = CVode(_cvodeMem, tout, _solution, &tret, CV_NORMAL);
       }
    }
@@ -720,6 +724,8 @@ void SimModelSolver_CVODES::FillSolverOptions(void)
 
    //relative tolerance
    _relTol_CVODE = _relTol;
+
+   _step = 0;
 
    //absolute tolerance
    if (_absTol_NV)

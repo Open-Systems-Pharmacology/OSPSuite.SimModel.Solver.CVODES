@@ -726,6 +726,10 @@ namespace UnitTests
 		array<double>^ _y0;
 		array<double>^ _y1;
 
+		long mxSteps = 1000000;
+
+		SimModelSolverBase::STEP_MODE step_mode = SimModelSolverBase::SINGLE;
+
 		virtual void Because() override
 		{
 			_time = gcnew array<double>(_numberOfTimesteps);
@@ -738,7 +742,7 @@ namespace UnitTests
 
 				pCVODES->SetAbsTol(1e-12);
 				pCVODES->SetInitialTime(0.0);
-
+				pCVODES->SetMxStep(mxSteps);
 				std::vector<double> y0;
 				y0.push_back(2.0);
 				y0.push_back(0.0);
@@ -755,7 +759,7 @@ namespace UnitTests
 					double tret;
 					do
 					{
-						_CVODE_Result = pCVODES->PerformSolverStep(tout, Solution, NULL, tret, SimModelSolverBase::SINGLE);
+						_CVODE_Result = pCVODES->PerformSolverStep(tout, Solution, NULL, tret, step_mode);
 					} while (_CVODE_Result == 0 && tret < tout);
 
 					if (_CVODE_Result != 0)
@@ -792,6 +796,79 @@ namespace UnitTests
 		virtual int NumberOfSensitivityParameters() override
 		{
 			return 0;
+		}
+	};
+
+	public ref class when_solving_system_that_is_too_much_work : public concern_for_simmodel_solver_cvodes_without_sensitivity
+	{
+	protected:
+
+		virtual TestSolverCallerBase* CreateSolverCaller() override
+		{
+			return new TestSolverCaller();
+		}
+
+		virtual void Because() override
+		{
+			mxSteps = 3;
+			concern_for_simmodel_solver_cvodes_without_sensitivity::Because();
+		}
+
+	public:
+
+		[TestAttribute]
+		void should_exit_with_appropriate_error_code()
+		{
+			BDDExtensions::ShouldBeEqualTo(_CVODE_Result, -1);
+		}
+	};
+
+	public ref class when_solving_system_that_is_too_much_work_but_the_mx_steps_are_disabled : public concern_for_simmodel_solver_cvodes_without_sensitivity
+	{
+	protected:
+
+		virtual TestSolverCallerBase* CreateSolverCaller() override
+		{
+			return new TestSolverCaller();
+		}
+
+		virtual void Because() override
+		{
+			mxSteps = 0;
+			concern_for_simmodel_solver_cvodes_without_sensitivity::Because();
+		}
+
+	public:
+
+		[TestAttribute]
+			void should_exit_with_success()
+		{
+			BDDExtensions::ShouldBeEqualTo(_CVODE_Result, 0);
+		}
+	};
+
+	public ref class when_solving_system_that_is_too_much_work_and_using_normal_run_mode : public concern_for_simmodel_solver_cvodes_without_sensitivity
+	{
+	protected:
+
+		virtual TestSolverCallerBase* CreateSolverCaller() override
+		{
+			return new TestSolverCaller();
+		}
+
+		virtual void Because() override
+		{
+			step_mode = SimModelSolverBase::NORMAL;
+			mxSteps = 3;
+			concern_for_simmodel_solver_cvodes_without_sensitivity::Because();
+		}
+
+	public:
+
+		[TestAttribute]
+			void should_exit_with_error_condition()
+		{
+			BDDExtensions::ShouldBeEqualTo(_CVODE_Result, -1);
 		}
 	};
 
