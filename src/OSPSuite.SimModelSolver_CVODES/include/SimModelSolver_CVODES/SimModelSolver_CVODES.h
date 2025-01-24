@@ -53,6 +53,9 @@ private:
 	//relative tolerance
 	realtype _relTol_CVODE;
 
+	// internal step counter
+	int _step;
+
 	//fill CVOde specific Solver options in datatypes required by CVODE
 	void FillSolverOptions(void);
 
