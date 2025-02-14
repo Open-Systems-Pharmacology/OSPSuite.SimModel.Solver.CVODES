@@ -23,7 +23,7 @@
     <file src="..\OSPSuite.SimModelSolver_CVODES\src\**\*.*" target="OSPSuite.SimModelSolver_CVODES\src" />
     <file src="..\OSPSuite.SimModelSolver_CVODES\*.*" target="OSPSuite.SimModelSolver_CVODES" exclude="..\OSPSuite.SimModelSolver_CVODES\*.vcxproj*" />
 
-    <file src="..\..\packages\CVODES.MacOS\CVODES\include\**\*.h" target="CVODES\include" />
+    <file src="..\..\packages\CVODES.MacOSArm64\CVODES\include\**\*.h" target="CVODES\include" />
 
     <file src="..\OSPSuite.SimModelSolverBase\src\OSPSuite.SimModelSolverBase\include\**\*.h" target="OSPSuite.SimModelSolverBase\include" />
     <file src="..\OSPSuite.SimModelSolverBase\src\OSPSuite.SimModelSolverBase\src\**\*.*" target="OSPSuite.SimModelSolverBase\src" />
