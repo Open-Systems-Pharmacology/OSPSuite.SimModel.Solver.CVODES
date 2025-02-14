@@ -2,7 +2,7 @@
 <package >
   <metadata>
     <description>SimModel Solver</description>
-    <id>OSPSuite.SimModelSolver_CVODES.MacOS</id>
+    <id>OSPSuite.SimModelSolver_CVODES.MacOSx64</id>
     <version>$version$</version>
     <title>OSPSuite.SimModelSolver_CVODES</title>
     <authors>Open-Systems-Pharmacology</authors>
@@ -11,7 +11,7 @@
     <licenseUrl>https://github.com/Open-Systems-PharmacologyOSPSuite.SimModelSolver_CVODES/blob/master/LICENSE</licenseUrl>
     <iconUrl>https://raw.githubusercontent.com/Open-Systems-Pharmacology/Suite/master/logo.png</iconUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
-    <copyright>Copyright © 2020 - Open Systems Pharmacology Community</copyright>
+    <copyright>Copyright © 2025 - Open Systems Pharmacology Community</copyright>
     <tags>open-systems-pharmacology</tags>
   </metadata>
   <files>
