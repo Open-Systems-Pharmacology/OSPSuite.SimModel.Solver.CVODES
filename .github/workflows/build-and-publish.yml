@@ -103,7 +103,7 @@ jobs:
 
       - name: define env variables
         run: |
-          nuget add source -username Open-Systems-Pharmacology -password ${{ secrets.GITHUB_TOKEN }} --name OSP-GitHub-Packages "https://nuget.pkg.github.com/Open-Systems-Pharmacology/index.json"
+          nuget sources add -username Open-Systems-Pharmacology -password ${{ secrets.GITHUB_TOKEN }} -name OSP-GitHub-Packages -source "https://nuget.pkg.github.com/Open-Systems-Pharmacology/index.json"
           echo "APP_VERSION=${{needs.get-version.outputs.APP_VERSION}}" >> $GITHUB_ENV
           echo "BUILD_ID=${{needs.get-version.outputs.BUILD_ID}}" >> $GITHUB_ENV
 
