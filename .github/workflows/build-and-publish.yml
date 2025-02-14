@@ -103,6 +103,7 @@ jobs:
 
       - name: define env variables
         run: |
+          nuget add source -username Open-Systems-Pharmacology -password ${{ secrets.GITHUB_TOKEN }} --name OSP-GitHub-Packages "https://nuget.pkg.github.com/Open-Systems-Pharmacology/index.json"
           echo "APP_VERSION=${{needs.get-version.outputs.APP_VERSION}}" >> $GITHUB_ENV
           echo "BUILD_ID=${{needs.get-version.outputs.BUILD_ID}}" >> $GITHUB_ENV
 
@@ -146,7 +147,9 @@ jobs:
           echo "BUILD_ID=${{needs.get-version.outputs.BUILD_ID}}" | Out-File -FilePath $env:GITHUB_ENV -Append
 
       - name: Restore dependencies
-        run: dotnet restore --source https://ci.appveyor.com/nuget/ospsuite-utility --source https://ci.appveyor.com/nuget/ospsuite-bddhelper --source https://www.nuget.org/api/v2/
+        run: |
+          nuget add source -username Open-Systems-Pharmacology -password ${{ secrets.GITHUB_TOKEN }} --name OSP-GitHub-Packages "https://nuget.pkg.github.com/Open-Systems-Pharmacology/index.json"
+          dotnet restore --source https://ci.appveyor.com/nuget/ospsuite-utility --source https://ci.appveyor.com/nuget/ospsuite-bddhelper --source https://www.nuget.org/api/v2/
 
       - name: Update version.h
         shell: pwsh
