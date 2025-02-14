@@ -167,7 +167,7 @@ jobs:
         run: msbuild OSPSuite.SimModelSolver.CVODES.sln /p:Configuration=Debug /p:Platform=x64
 
       - name: Test
-        run: dotnet test --no-build --no-restore --configuration:Release
+        run: vstest.console.exe tests/OSPSuite.SimModelSolver_CVODES.Tests/Release/x64/OSPSuite.SimModelSolver_CVODES.Tests.Release.x64.dll
 
       - name: Pack the project
         run: dotnet pack src/OSPSuite.SimModelSolver_CVODES/ -o ./ -p:PackageVersion=${{env.APP_VERSION}}
