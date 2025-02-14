@@ -160,10 +160,10 @@ jobs:
         uses: microsoft/setup-msbuild@v2
 
       - name: build release
-        run: msbuild OSPSuite.SimModelSolver_CVODES.sln /p:Configuration=Release /p:Platform=x64
+        run: msbuild OSPSuite.SimModelSolver.CVODES.sln /p:Configuration=Release /p:Platform=x64
 
       - name: build debug
-        run: msbuild OSPSuite.SimModelSolver_CVODES.sln /p:Configuration=Debug /p:Platform=x64
+        run: msbuild OSPSuite.SimModelSolver.CVODES.sln /p:Configuration=Debug /p:Platform=x64
 
       - name: Test
         run: dotnet test --no-build --no-restore --configuration:Release
