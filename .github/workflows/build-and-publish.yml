@@ -172,7 +172,7 @@ jobs:
           ./NUnit.ConsoleRunner.3.19.2/tools/nunit3-console.exe Build/Release/x64/OSPSuite.SimModelSolver_CVODES.Tests.Release.x64.dll
 
       - name: Pack the project
-        run: dotnet pack src/OSPSuite.SimModelSolver_CVODES/ -o ./ -p:PackageVersion=${{env.APP_VERSION}}
+        run: dotnet pack src/OSPSuite.SimModelSolver_CVODES/pack.csproj -o ./ -p:PackageVersion=${{env.APP_VERSION}}
 
       - name: Push nupkg as artifact
         # if it is a push to a branch
