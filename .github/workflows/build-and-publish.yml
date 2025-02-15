@@ -167,7 +167,9 @@ jobs:
         run: msbuild OSPSuite.SimModelSolver.CVODES.sln /p:Configuration=Debug /p:Platform=x64
 
       - name: Test
-        run: '& "$(vswhere -property installationPath)\Common7\IDE\CommonExtensions\Microsoft\TestWindow\vstest.console.exe" Build/Release/x64/OSPSuite.SimModelSolver_CVODES.Tests.Release.x64.dll'
+        run: |
+          nuget install NUnit.ConsoleRunner -Version 3.19.2 -DirectDownload -OutputDirectory .
+          ./NUnit.ConsoleRunner.3.19.2/tools/nunit3-console.exe Build/Release/x64/OSPSuite.SimModelSolver_CVODES.Tests.Release.x64.dll
 
       - name: Pack the project
         run: dotnet pack src/OSPSuite.SimModelSolver_CVODES/ -o ./ -p:PackageVersion=${{env.APP_VERSION}}
