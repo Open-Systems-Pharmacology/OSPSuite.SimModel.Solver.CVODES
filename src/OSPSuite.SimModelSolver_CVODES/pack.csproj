@@ -15,8 +15,12 @@
     <NuspecFile>OSPSuite.SimModelSolver_CVODES_Ubuntu22.nuspec</NuspecFile> 
   </PropertyGroup>
 
-  <PropertyGroup Condition="$([MSBuild]::IsOSPlatform('OSX'))">
-    <NuspecFile>OSPSuite.SimModelSolver_CVODES_MacOS.nuspec</NuspecFile> 
+  <PropertyGroup Condition="$([MSBuild]::IsOSPlatform('OSX')) AND '$([System.Runtime.InteropServices.RuntimeInformation]::OSArchitecture)' == 'X64'">
+    <NuspecFile>OSPSuite.SimModelSolver_CVODES_MacOSx64.nuspec</NuspecFile> 
+  </PropertyGroup>
+
+    <PropertyGroup Condition="$([MSBuild]::IsOSPlatform('OSX')) AND '$([System.Runtime.InteropServices.RuntimeInformation]::OSArchitecture)' == 'Arm64'">
+    <NuspecFile>OSPSuite.SimModelSolver_CVODES_MacOSArm64.nuspec</NuspecFile> 
   </PropertyGroup>
 
 </Project>

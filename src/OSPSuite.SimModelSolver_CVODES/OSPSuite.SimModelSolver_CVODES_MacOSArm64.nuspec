@@ -2,7 +2,7 @@
 <package >
   <metadata>
     <description>SimModel Solver</description>
-    <id>OSPSuite.SimModelSolver_CVODES.MacOS</id>
+    <id>OSPSuite.SimModelSolver_CVODES.MacOSArm64</id>
     <version>$version$</version>
     <title>OSPSuite.SimModelSolver_CVODES</title>
     <authors>Open-Systems-Pharmacology</authors>
@@ -11,19 +11,19 @@
     <licenseUrl>https://github.com/Open-Systems-PharmacologyOSPSuite.SimModelSolver_CVODES/blob/master/LICENSE</licenseUrl>
     <iconUrl>https://raw.githubusercontent.com/Open-Systems-Pharmacology/Suite/master/logo.png</iconUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
-    <copyright>Copyright © 2020 - Open Systems Pharmacology Community</copyright>
+    <copyright>Copyright © 2025 - Open Systems Pharmacology Community</copyright>
     <tags>open-systems-pharmacology</tags>
   </metadata>
   <files>
-    <file src="..\..\Build\Debug\x64\libOSPSuite.SimModelSolver_CVODES.dylib" target="OSPSuite.SimModelSolver_CVODES\bin\native\x64\Debug" />
+    <file src="..\..\Build\Debug\Arm64\libOSPSuite.SimModelSolver_CVODES.dylib" target="OSPSuite.SimModelSolver_CVODES\bin\native\Arm64\Debug" />
 
-    <file src="..\..\Build\Release\x64\libOSPSuite.SimModelSolver_CVODES.dylib" target="OSPSuite.SimModelSolver_CVODES\bin\native\x64\Release" />
+    <file src="..\..\Build\Release\Arm64\libOSPSuite.SimModelSolver_CVODES.dylib" target="OSPSuite.SimModelSolver_CVODES\bin\native\Arm64\Release" />
 
     <file src="..\OSPSuite.SimModelSolver_CVODES\include\**\*.h" target="OSPSuite.SimModelSolver_CVODES\include" />
     <file src="..\OSPSuite.SimModelSolver_CVODES\src\**\*.*" target="OSPSuite.SimModelSolver_CVODES\src" />
     <file src="..\OSPSuite.SimModelSolver_CVODES\*.*" target="OSPSuite.SimModelSolver_CVODES" exclude="..\OSPSuite.SimModelSolver_CVODES\*.vcxproj*" />
 
-    <file src="..\..\packages\CVODES.MacOS\CVODES\include\**\*.h" target="CVODES\include" />
+    <file src="..\..\packages\CVODES.MacOSArm64\CVODES\include\**\*.h" target="CVODES\include" />
 
     <file src="..\OSPSuite.SimModelSolverBase\src\OSPSuite.SimModelSolverBase\include\**\*.h" target="OSPSuite.SimModelSolverBase\include" />
     <file src="..\OSPSuite.SimModelSolverBase\src\OSPSuite.SimModelSolverBase\src\**\*.*" target="OSPSuite.SimModelSolverBase\src" />

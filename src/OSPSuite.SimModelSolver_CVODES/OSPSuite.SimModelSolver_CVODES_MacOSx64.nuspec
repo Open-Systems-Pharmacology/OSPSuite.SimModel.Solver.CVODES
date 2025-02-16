@@ -2,7 +2,7 @@
 <package >
   <metadata>
     <description>SimModel Solver</description>
-    <id>OSPSuite.SimModelSolver_CVODES.Ubuntu22</id>
+    <id>OSPSuite.SimModelSolver_CVODES.MacOSx64</id>
     <version>$version$</version>
     <title>OSPSuite.SimModelSolver_CVODES</title>
     <authors>Open-Systems-Pharmacology</authors>
@@ -15,15 +15,15 @@
     <tags>open-systems-pharmacology</tags>
   </metadata>
   <files>
-    <file src="..\..\Build\Debug\x64\libOSPSuite.SimModelSolver_CVODES.so" target="OSPSuite.SimModelSolver_CVODES\bin\native\x64\Debug" />
+    <file src="..\..\Build\Debug\x64\libOSPSuite.SimModelSolver_CVODES.dylib" target="OSPSuite.SimModelSolver_CVODES\bin\native\x64\Debug" />
 
-    <file src="..\..\Build\Release\x64\libOSPSuite.SimModelSolver_CVODES.so" target="OSPSuite.SimModelSolver_CVODES\bin\native\x64\Release" />
+    <file src="..\..\Build\Release\x64\libOSPSuite.SimModelSolver_CVODES.dylib" target="OSPSuite.SimModelSolver_CVODES\bin\native\x64\Release" />
 
     <file src="..\OSPSuite.SimModelSolver_CVODES\include\**\*.h" target="OSPSuite.SimModelSolver_CVODES\include" />
     <file src="..\OSPSuite.SimModelSolver_CVODES\src\**\*.*" target="OSPSuite.SimModelSolver_CVODES\src" />
     <file src="..\OSPSuite.SimModelSolver_CVODES\*.*" target="OSPSuite.SimModelSolver_CVODES" exclude="..\OSPSuite.SimModelSolver_CVODES\*.vcxproj*" />
 
-    <file src="..\..\packages\CVODES.Ubuntu22\CVODES\include\**\*.h" target="CVODES\include" />
+    <file src="..\..\packages\CVODES.MacOSx64\CVODES\include\**\*.h" target="CVODES\include" />
 
     <file src="..\OSPSuite.SimModelSolverBase\src\OSPSuite.SimModelSolverBase\include\**\*.h" target="OSPSuite.SimModelSolverBase\include" />
     <file src="..\OSPSuite.SimModelSolverBase\src\OSPSuite.SimModelSolverBase\src\**\*.*" target="OSPSuite.SimModelSolverBase\src" />
