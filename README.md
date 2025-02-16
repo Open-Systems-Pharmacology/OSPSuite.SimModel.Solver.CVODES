@@ -17,7 +17,7 @@ nuget restore packages.config -PackagesDirectory packages
 
 ## Code Status
 [![NuGet version](https://img.shields.io/nuget/v/OSPSuite.SimModelSolver_CVODES.svg?style=flat)](https://www.nuget.org/packages/OSPSuite.SimModelSolver_CVODES)
-[![Build status](https://ci.appveyor.com/api/projects/status/bugqfsf0bsfxrfai/branch/master?svg=true&passingText=master%20-%20passing)](https://ci.appveyor.com/project/open-systems-pharmacology-ci/ospsuite-simmodel-solver-cvodes/branch/master)
+[![Build status](https://img.shields.io/github/actions/workflow/status/Open-Systems-Pharmacology/OSPSuite.SimModel.Solver.CVODES/build-and-publish.yml?logo=nuget&label=Build%20status)](https://github.com/Open-Systems-Pharmacology/OSPSuite.SimModel.Solver.CVODES/actions/workflows/build-and-publish.yml)
 
 ## Code of conduct
 Everyone interacting in the Open Systems Pharmacology community (codebases, issue trackers, chat rooms, mailing lists etc...) is expected to follow the Open Systems Pharmacology [code of conduct](https://github.com/Open-Systems-Pharmacology/Suite/blob/master/CODE_OF_CONDUCT.md).
