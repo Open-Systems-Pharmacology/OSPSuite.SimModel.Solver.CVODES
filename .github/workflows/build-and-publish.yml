@@ -14,7 +14,7 @@ env:
 
 jobs:
   get-version:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
     outputs:
       BUILD_ID: ${{ steps.get_build_id.outputs.BUILD_ID}}
       APP_VERSION: ${{ steps.get_app_version.outputs.APP_VERSION}}
@@ -81,7 +81,7 @@ jobs:
       fail-fast: false
       matrix:
         include:
-          - os: macos-latest
+          - os: macos-14
             platform: MacOS
             nuget_package: OSPSuite.SimModelSolver_CVODES.MacOSArm64
             version_h_modifier: "sed -i ''"
@@ -133,7 +133,7 @@ jobs:
         run: dotnet nuget push ./*.nupkg --source https://nuget.pkg.github.com/${{github.repository_owner}}/index.json --api-key ${{ secrets.GITHUB_TOKEN }}
 
   build-windows-x64:
-    runs-on: windows-latest
+    runs-on: windows-2022
     needs: get-version
 
     steps:
