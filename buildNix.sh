@@ -46,7 +46,7 @@ git submodule update --init --recursive
 # no Debug/Release axis; consumers needing native debugging build from the
 # source shipped in the package under OSPSuite.SimModelSolver_CVODES/src/ and
 # include/).
-cmake -BBuild/Release/$ARCH/ -Hsrc/OSPSuite.SimModelSolver_CVODES/ -DCMAKE_BUILD_TYPE=Release -DlibCVODES=packages/CVODES/runtimes/$RID/native/libsundials_cvodes.a
+cmake -BBuild/Release/$ARCH/ -Hsrc/OSPSuite.SimModelSolver_CVODES/ -DCMAKE_BUILD_TYPE=Release -DRID=$RID -DlibCVODES=packages/CVODES/runtimes/$RID/native/libsundials_cvodes.a
 make -C Build/Release/$ARCH/
 
 # Stage the native binary at runtimes/<rid>/native/ — the canonical location

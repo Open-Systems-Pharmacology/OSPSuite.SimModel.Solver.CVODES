@@ -60,7 +60,7 @@
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
       <Optimization>Disabled</Optimization>
-      <AdditionalIncludeDirectories>$(ProjectDir)..\..\packages\CVODES\CVODES\include;$(ProjectDir)Include;%(AdditionalIncludeDirectories);$(SolutionDir)src\OSPSuite.SimModelSolverBase\src\OSPSuite.SimModelSolverBase\Include</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ProjectDir)..\..\packages\CVODES\CVODES\include;$(ProjectDir)..\..\packages\CVODES\runtimes\win-x64\native\include;$(ProjectDir)Include;%(AdditionalIncludeDirectories);$(SolutionDir)src\OSPSuite.SimModelSolverBase\src\OSPSuite.SimModelSolverBase\Include</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>_DEBUG;_WINDOWS;_USRDLL;SIMMODELSOLVER_CVODES_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <MinimalRebuild>false</MinimalRebuild>
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
@@ -97,7 +97,7 @@
     <ClCompile>
       <Optimization>MaxSpeed</Optimization>
       <IntrinsicFunctions>true</IntrinsicFunctions>
-      <AdditionalIncludeDirectories>$(ProjectDir)..\..\packages\CVODES\CVODES\include;$(ProjectDir)Include;%(AdditionalIncludeDirectories);$(SolutionDir)src\OSPSuite.SimModelSolverBase\src\OSPSuite.SimModelSolverBase\Include</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ProjectDir)..\..\packages\CVODES\CVODES\include;$(ProjectDir)..\..\packages\CVODES\runtimes\win-x64\native\include;$(ProjectDir)Include;%(AdditionalIncludeDirectories);$(SolutionDir)src\OSPSuite.SimModelSolverBase\src\OSPSuite.SimModelSolverBase\Include</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>NDEBUG;_WINDOWS;_USRDLL;SIMMODELSOLVER_CVODES_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
       <FunctionLevelLinking>true</FunctionLevelLinking>
