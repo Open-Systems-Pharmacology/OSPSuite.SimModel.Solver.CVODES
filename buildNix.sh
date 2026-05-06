@@ -15,18 +15,27 @@
 
 set -e
 
-if [ "$(uname -m)" = 'x86_64' ]; then
-  ARCH=x64
-else
-  ARCH=Arm64
-fi
+UNAME_S="$(uname)"
+UNAME_M="$(uname -m)"
 
-if [ "$(uname)" = 'Darwin' ]; then
+# OSP supports macOS Arm64 and Linux x86_64. Intel macOS and Linux Arm64 are
+# explicitly out of scope — fail fast so a misconfigured local run doesn't
+# silently stage a wrong-arch binary under the wrong runtime folder.
+if [ "$UNAME_S" = 'Darwin' ]; then
+  if [ "$UNAME_M" != 'arm64' ]; then
+    echo "Unsupported macOS architecture: $UNAME_M (only arm64 is supported; Intel macOS was dropped in #37)" >&2
+    exit 1
+  fi
+  ARCH=Arm64
   RID=osx-arm64
   NATIVE_FILE=libOSPSuite.SimModelSolver_CVODES.dylib
-else
+elif [ "$UNAME_M" = 'x86_64' ]; then
+  ARCH=x64
   RID=linux-x64
   NATIVE_FILE=libOSPSuite.SimModelSolver_CVODES.so
+else
+  echo "Unsupported architecture: $UNAME_S/$UNAME_M" >&2
+  exit 1
 fi
 
 nuget install packages.config -OutputDirectory packages -ExcludeVersion

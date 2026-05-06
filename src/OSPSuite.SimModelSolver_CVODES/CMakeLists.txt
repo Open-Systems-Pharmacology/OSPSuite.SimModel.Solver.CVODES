@@ -7,7 +7,7 @@ set (CMAKE_CXX_FLAGS_RELEASE "-O3")
 
 include_directories (
     ${OSPSuite.SimModelSolver_CVODES_SOURCE_DIR}/include 
-	../../packages/CVODES.Ubuntu22/CVODES/include 
+	../../packages/CVODES/CVODES/include
 	${OSPSuite.SimModelSolver_CVODES_SOURCE_DIR}/../OSPSuite.SimModelSolverBase/src/OSPSuite.SimModelSolverBase/include 
 )
 
