@@ -1,26 +1,11 @@
 <Project Sdk="Microsoft.NET.Sdk">
+
   <PropertyGroup>
-    <TargetFrameworks>net472;netstandard2.0</TargetFrameworks>
+    <TargetFramework>net10.0</TargetFramework>
     <NoBuild>true</NoBuild>
     <IncludeBuildOutput>false</IncludeBuildOutput>
-        <NuspecProperties>version=$(PackageVersion)</NuspecProperties>
-  </PropertyGroup>
-
-  <PropertyGroup Condition="$([MSBuild]::IsOSPlatform('Windows'))">
-    <DefineConstants>_WINDOWS</DefineConstants>
-    <NuspecFile>OSPSuite.SimModelSolver_CVODES.nuspec</NuspecFile> 
-  </PropertyGroup>
-
-  <PropertyGroup Condition="$([MSBuild]::IsOSPlatform('Linux'))">
-    <NuspecFile>OSPSuite.SimModelSolver_CVODES_Ubuntu22.nuspec</NuspecFile> 
-  </PropertyGroup>
-
-  <PropertyGroup Condition="$([MSBuild]::IsOSPlatform('OSX')) AND '$([System.Runtime.InteropServices.RuntimeInformation]::OSArchitecture)' == 'X64'">
-    <NuspecFile>OSPSuite.SimModelSolver_CVODES_MacOSx64.nuspec</NuspecFile> 
-  </PropertyGroup>
-
-    <PropertyGroup Condition="$([MSBuild]::IsOSPlatform('OSX')) AND '$([System.Runtime.InteropServices.RuntimeInformation]::OSArchitecture)' == 'Arm64'">
-    <NuspecFile>OSPSuite.SimModelSolver_CVODES_MacOSArm64.nuspec</NuspecFile> 
+    <NuspecFile>OSPSuite.SimModelSolver_CVODES.nuspec</NuspecFile>
+    <NuspecProperties>version=$(PackageVersion)</NuspecProperties>
   </PropertyGroup>
 
 </Project>
