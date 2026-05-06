@@ -22,6 +22,7 @@ bld/
 [Oo]bj/
 [Ll]og/
 IntermediateDebug/
+runtimes/
 
 # Visual Studio 2015 cache/options directory
 .vs/

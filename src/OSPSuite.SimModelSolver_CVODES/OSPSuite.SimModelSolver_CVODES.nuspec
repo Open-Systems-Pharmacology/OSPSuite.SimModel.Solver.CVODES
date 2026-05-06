@@ -1,37 +1,44 @@
 <?xml version="1.0"?>
-<package >
+<package>
   <metadata>
-    <description>SimModel Solver</description>
+    <description>SimModel Solver based on the SUNDIALS CVODES library</description>
     <id>OSPSuite.SimModelSolver_CVODES</id>
     <version>$version$</version>
     <title>OSPSuite.SimModelSolver_CVODES</title>
     <authors>Open-Systems-Pharmacology</authors>
     <owners>Open-Systems-Pharmacology</owners>
     <projectUrl>https://github.com/Open-Systems-Pharmacology/OSPSuite.SimModelSolver_CVODES</projectUrl>
-    <licenseUrl>https://github.com/Open-Systems-PharmacologyOSPSuite.SimModelSolver_CVODES/blob/master/LICENSE</licenseUrl>
-    <iconUrl>https://raw.githubusercontent.com/Open-Systems-Pharmacology/Suite/master/logo.png</iconUrl>
+    <license type="file">LICENSE</license>
+    <icon>logo.png</icon>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
-    <copyright>Copyright © 2025 - Open Systems Pharmacology Community</copyright>
+    <copyright>Copyright © 2026 - Open Systems Pharmacology Community</copyright>
     <tags>open-systems-pharmacology</tags>
+    <dependencies>
+      <group targetFramework="net10.0" />
+    </dependencies>
   </metadata>
   <files>
-    <file src="..\..\Build\Debug\x64\OSPSuite.SimModelSolver_CVODES.dll" target="OSPSuite.SimModelSolver_CVODES\bin\native\x64\Debug" />
-    <file src="..\..\Build\Debug\x64\OSPSuite.SimModelSolver_CVODES.lib" target="OSPSuite.SimModelSolver_CVODES\bin\native\x64\Debug" />
-    <file src="..\..\Build\Debug\x64\OSPSuite.SimModelSolver_CVODES.pdb" target="OSPSuite.SimModelSolver_CVODES\bin\native\x64\Debug" />
+    <file src="..\..\LICENSE" />
+    <file src="..\..\logo.png" />
 
-    <file src="..\..\Build\Release\x64\OSPSuite.SimModelSolver_CVODES.dll" target="OSPSuite.SimModelSolver_CVODES\bin\native\x64\Release" />
-    <file src="..\..\Build\Release\x64\OSPSuite.SimModelSolver_CVODES.lib" target="OSPSuite.SimModelSolver_CVODES\bin\native\x64\Release" />
-    <file src="..\..\Build\Release\x64\OSPSuite.SimModelSolver_CVODES.pdb" target="OSPSuite.SimModelSolver_CVODES\bin\native\x64\Release" />
+    <!-- Empty placeholder so NuGet treats the package as compatible with net10.0
+         consumers; this is the canonical convention for native-only packages
+         that ship under runtimes/<rid>/native/ with no managed assembly. -->
+    <file src="_._" target="lib\net10.0" />
+
+    <file src="..\..\runtimes\win-x64\native\OSPSuite.SimModelSolver_CVODES.dll" target="runtimes\win-x64\native" />
+    <file src="..\..\runtimes\win-x64\native\OSPSuite.SimModelSolver_CVODES.lib" target="runtimes\win-x64\native" />
+    <file src="..\..\runtimes\linux-x64\native\libOSPSuite.SimModelSolver_CVODES.so" target="runtimes\linux-x64\native" />
+    <file src="..\..\runtimes\osx-arm64\native\libOSPSuite.SimModelSolver_CVODES.dylib" target="runtimes\osx-arm64\native" />
 
     <file src="..\OSPSuite.SimModelSolver_CVODES\include\**\*.h" target="OSPSuite.SimModelSolver_CVODES\include" />
     <file src="..\OSPSuite.SimModelSolver_CVODES\src\**\*.*" target="OSPSuite.SimModelSolver_CVODES\src" />
-    <file src="..\OSPSuite.SimModelSolver_CVODES\*.*" target="OSPSuite.SimModelSolver_CVODES" exclude="..\OSPSuite.SimModelSolver_CVODES\*.vcxproj*" />
+    <file src="..\OSPSuite.SimModelSolver_CVODES\*.*" target="OSPSuite.SimModelSolver_CVODES" exclude="..\OSPSuite.SimModelSolver_CVODES\*.vcxproj*;..\OSPSuite.SimModelSolver_CVODES\_._" />
 
-    <file src="..\..\packages\CVODES.Windows\CVODES\include\**\*.h" target="CVODES\include" />
+    <file src="..\..\packages\CVODES\CVODES\include\**\*.h" target="CVODES\include" />
 
     <file src="..\OSPSuite.SimModelSolverBase\src\OSPSuite.SimModelSolverBase\include\**\*.h" target="OSPSuite.SimModelSolverBase\include" />
     <file src="..\OSPSuite.SimModelSolverBase\src\OSPSuite.SimModelSolverBase\src\**\*.*" target="OSPSuite.SimModelSolverBase\src" />
-    <file src="..\OSPSuite.SimModelSolverBase\src\OSPSuite.SimModelSolverBase\*.*" target="OSPSuite.SimModelSolverBase" exclude="..\OSPSuite.SimModelSolverBase\*.vcxproj*" />
-
+    <file src="..\OSPSuite.SimModelSolverBase\src\OSPSuite.SimModelSolverBase\*.*" target="OSPSuite.SimModelSolverBase" exclude="..\OSPSuite.SimModelSolverBase\src\OSPSuite.SimModelSolverBase\*.vcxproj*;..\OSPSuite.SimModelSolverBase\src\OSPSuite.SimModelSolverBase\.*" />
   </files>
 </package>
